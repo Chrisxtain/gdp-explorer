@@ -7,6 +7,7 @@
 ## 📖 Overview
 
 **GDP Explorer** is a sleek, browser-based web application that lets users explore and compare the **Gross Domestic Product (GDP)** of selected countries over time. It pulls **live historical data** from the [Trading Economics API](https://tradingeconomics.com/), processes it in the browser, and renders it as beautiful, animated charts — no backend database required.
+link-> https://gdpexplorer.netlify.app/
 
 The app is designed with a focus on:
 

@@ -2,11 +2,6 @@
 
 > **Explore historical GDP data for countries around the world — with real-time data, stunning interactive charts, and a premium dark-themed UI.**
 
-[![Live Data](https://img.shields.io/badge/Data%20Source-Trading%20Economics%20API-blue?style=flat-square)](https://tradingeconomics.com/)
-[![Built With](https://img.shields.io/badge/Built%20With-Vanilla%20JS%20%7C%20HTML%20%7C%20CSS-orange?style=flat-square)]()
-[![Charts](https://img.shields.io/badge/Charts-Chart.js-ff6384?style=flat-square)](https://www.chartjs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](./LICENSE)
-
 ---
 
 ## 📖 Overview
@@ -14,6 +9,7 @@
 **GDP Explorer** is a sleek, browser-based web application that lets users explore and compare the **Gross Domestic Product (GDP)** of selected countries over time. It pulls **live historical data** from the [Trading Economics API](https://tradingeconomics.com/), processes it in the browser, and renders it as beautiful, animated charts — no backend database required.
 
 The app is designed with a focus on:
+
 - 📊 **Data clarity** — clean, readable charts with meaningful labels and tooltips
 - 🎨 **Visual excellence** — dark glassmorphism UI with smooth animations
 - ⚡ **Performance** — in-memory data caching so fetched data is never re-requested
@@ -23,31 +19,31 @@ The app is designed with a focus on:
 
 ## ✨ Features
 
-| Feature | Description |
-|---|---|
-| 🗺️ **Country Selection** | Switch between Mexico, Sweden, Thailand, and New Zealand |
-| 📈 **Historical Line Chart** | Animated line chart showing GDP trend over time |
-| 📅 **Time Range Filters** | View data for the last 20 years, last 40 years, or all available data |
-| 📊 **Comparison Bar Chart** | Side-by-side GDP comparison of all four countries |
-| 🃏 **Stats Cards** | Current GDP, Peak GDP, Years of Data tracked, and % Growth since year 2000 |
-| 🔍 **Country Detail Card** | Country description, minimum GDP on record, average GDP, and latest data year |
-| 🔴 **Live API Data** | All GDP figures are fetched in real time from the Trading Economics API |
-| 💾 **Smart Caching** | Country data is cached in memory — selecting a previously loaded country is instant |
-| 🎬 **Micro-animations** | Animated stat counters, scroll-triggered card reveals, and floating background particles |
-| 📱 **Responsive Design** | Adapts cleanly to different screen widths |
+| Feature                      | Description                                                                              |
+| ---------------------------- | ---------------------------------------------------------------------------------------- |
+| 🗺️ **Country Selection**     | Switch between Mexico, Sweden, Thailand, and New Zealand                                 |
+| 📈 **Historical Line Chart** | Animated line chart showing GDP trend over time                                          |
+| 📅 **Time Range Filters**    | View data for the last 20 years, last 40 years, or all available data                    |
+| 📊 **Comparison Bar Chart**  | Side-by-side GDP comparison of all four countries                                        |
+| 🃏 **Stats Cards**           | Current GDP, Peak GDP, Years of Data tracked, and % Growth since year 2000               |
+| 🔍 **Country Detail Card**   | Country description, minimum GDP on record, average GDP, and latest data year            |
+| 🔴 **Live API Data**         | All GDP figures are fetched in real time from the Trading Economics API                  |
+| 💾 **Smart Caching**         | Country data is cached in memory — selecting a previously loaded country is instant      |
+| 🎬 **Micro-animations**      | Animated stat counters, scroll-triggered card reveals, and floating background particles |
+| 📱 **Responsive Design**     | Adapts cleanly to different screen widths                                                |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Structure** | HTML5 (Semantic markup) |
-| **Styling** | Vanilla CSS (Custom properties, glassmorphism, keyframe animations) |
-| **Logic** | Vanilla JavaScript (ES2020+, async/await, Fetch API) |
-| **Charts** | [Chart.js v4](https://www.chartjs.org/) (via CDN) |
-| **Data** | [Trading Economics REST API](https://tradingeconomics.com/analytics/docs.aspx) |
-| **Server** | Node.js built-in `http` module (static file server) |
+| Layer         | Technology                                                                     |
+| ------------- | ------------------------------------------------------------------------------ |
+| **Structure** | HTML5 (Semantic markup)                                                        |
+| **Styling**   | Vanilla CSS (Custom properties, glassmorphism, keyframe animations)            |
+| **Logic**     | Vanilla JavaScript (ES2020+, async/await, Fetch API)                           |
+| **Charts**    | [Chart.js v4](https://www.chartjs.org/) (via CDN)                              |
+| **Data**      | [Trading Economics REST API](https://tradingeconomics.com/analytics/docs.aspx) |
+| **Server**    | Node.js built-in `http` module (static file server)                            |
 
 No frameworks. No build tools. No npm dependencies beyond Node.js itself.
 
@@ -77,12 +73,14 @@ gdp-explorer/
 ### Installation & Running Locally
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Chrisxtain/gdp-explorer.git
    cd gdp-explorer
    ```
 
 2. **Start the local server**
+
    ```bash
    node server.js
    ```
@@ -109,6 +107,7 @@ GDP data is sourced from the **Trading Economics API**.
 - **CORS:** Trading Economics allows direct browser requests from `localhost` origins, so no proxy is needed when running locally
 
 ### Sample API Response
+
 ```json
 [
   { "Country": "Mexico", "Category": "GDP", "DateTime": "1960-12-31T00:00:00", "Value": 13.04, "Frequency": "Yearly" },
@@ -123,12 +122,12 @@ GDP data is sourced from the **Trading Economics API**.
 
 ## 🌐 Countries Supported
 
-| Country | Flag | Color Theme |
-|---|---|---|
-| Mexico | 🇲🇽 | Gold `#f6c90e` |
-| Sweden | 🇸🇪 | Sky Blue `#63b3ed` |
-| Thailand | 🇹🇭 | Mint Green `#68d391` |
-| New Zealand | 🇳🇿 | Soft Purple `#9f7aea` |
+| Country     | Flag | Color Theme           |
+| ----------- | ---- | --------------------- |
+| Mexico      | 🇲🇽   | Gold `#f6c90e`        |
+| Sweden      | 🇸🇪   | Sky Blue `#63b3ed`    |
+| Thailand    | 🇹🇭   | Mint Green `#68d391`  |
+| New Zealand | 🇳🇿   | Soft Purple `#9f7aea` |
 
 Each country has its own accent color applied consistently across its stat cards, line chart, and detail section.
 
@@ -156,6 +155,7 @@ Contributions are welcome! Here are some ideas for enhancements:
 - Implement a search/filter for countries
 
 To contribute:
+
 1. Fork the repo
 2. Create a feature branch: `git checkout -b feature/my-feature`
 3. Commit your changes: `git commit -m "Add my feature"`

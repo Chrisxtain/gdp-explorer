@@ -63,6 +63,10 @@ function fmt(val) {
   return val.toFixed(1) + 'B';
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function animateCounter(el, target, prefix = '', suffix = '') {
   const start = 0;
   const duration = 900;
@@ -238,9 +242,22 @@ function renderLineChart(country, data, range) {
 
 // ── Render Bar Chart (comparison) ────────────────────
 async function renderBarChart() {
-  // Fetch all 4 countries — use allSettled so one failure doesn't block others
+  // Fetch all 4 countries sequentially with a small delay between each
+  // to avoid hitting Trading Economics API rate limits on concurrent requests
   const keys = Object.keys(COUNTRIES);
-  const settled = await Promise.allSettled(keys.map(k => fetchGDP(k)));
+  const results = [];
+
+  for (const key of keys) {
+    try {
+      // Cache hit: no delay needed — data already in memory
+      if (!allData[key]) await sleep(600);
+      const data = await fetchGDP(key);
+      results.push({ status: 'fulfilled', value: data });
+    } catch (err) {
+      console.warn(`Bar chart: failed to load ${key}`, err);
+      results.push({ status: 'rejected' });
+    }
+  }
 
   document.getElementById('barLoader').style.display = 'none';
   document.getElementById('barChartWrapper').style.display = 'block';
@@ -250,7 +267,7 @@ async function renderBarChart() {
   const colors = [];
   const alphas = [];
 
-  settled.forEach((result, i) => {
+  results.forEach((result, i) => {
     const k = keys[i];
     labels.push(COUNTRIES[k].name);
     const arr = result.status === 'fulfilled' ? result.value : [];
@@ -407,7 +424,9 @@ async function init() {
   // Load initial country (Mexico)
   await selectCountry('mexico');
 
-  // Load comparison chart in background
+  // Wait briefly before firing bar chart requests so the initial Mexico
+  // API call fully clears the rate-limit window before 3 more requests go out
+  await sleep(1000);
   renderBarChart();
 }
 
